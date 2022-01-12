@@ -59,8 +59,8 @@ const CardInfoComponent: React.FC<any> = (props) => {
                     }: {
                         format: string;
                         legality: string;
-                    }) => (
-                        <CardLegalInfoView>
+                    },index: number) => (
+                        <CardLegalInfoView key={index}>
                             <CardLegalInfoText>
                                 {format} 
                             </CardLegalInfoText>

@@ -56,7 +56,9 @@ const DeckEditComponent: React.FC<IDeckEditProps> = ({
                 </CardAddButton>
             </DeckInfo>
             <ListCardViewComponent
-                navigation={navigation}
+                onCardPress={()=>{
+                    console.log("card pressionado");
+                }}
                 cards={deck.cards?.map(({ card }) => card)}
             />
             <RedFloatButtonComponent

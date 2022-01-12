@@ -54,16 +54,14 @@ export const CardRuleDescriptionText = styled.Text`
 `;
 
 export const CardLegalInfoScroll = styled.ScrollView`
-    margin-top: 15px;
     width: 100%;
-    align-self: flex-end;
 `;
 export const CardLegalInfoView = styled.View`
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: center;
     flex-wrap: wrap;
+    /* justify-content: center; */
 `;
 export const CardLegalInfoText = styled.Text`
     margin-top: 15px;

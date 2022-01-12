@@ -11,23 +11,18 @@ import {
 } from "./styles";
 interface IListCardAmountProps {
     card: Card;
-    navigation: any;
     amount: number;
     callback: (newValue:number)=> void;
+    onCardPress: (card: Card)=> void;
 }
-const ListCardAmountAdapter: React.FC<IListCardAmountProps> = (props) => {
-    const { card, navigation, amount, callback } = props;
+const ListCardAmountAdapter: React.FC<IListCardAmountProps> = ({ card, amount, callback, onCardPress } ) => {
     const [ new_amount, setAmount] = useState(amount)
-    const avancar = () => {
-        navigation.navigate("CardView", { card: card });
-    };
-
     useEffect(() => {
         callback(new_amount)
     }, [new_amount])
     return (
         <Container>
-            <ClickMe onPress={() => avancar()}>
+            <ClickMe onPress={() => onCardPress(card)}>
                 <CardAmount 
                     value={amount.toString()}
                     keyboardType="numeric"

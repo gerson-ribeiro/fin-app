@@ -9,22 +9,20 @@ import {
     ClickMe,
     Container,
 } from "./styles";
-import { StackNavigationProp } from "react-navigation-stack/lib/typescript/src/vendor/types";
-
-const ListCardAdapter: React.FC<any> = (props) => {
-    const {card, navigation} = props;
-    const avancar = () => {
-        navigation.navigate("CardView", { card: card })
-    };
+interface IListCardProps {
+    onCardPress: (card: Card) => void;
+    card: Card;
+}
+const ListCardAdapter: React.FC<IListCardProps> = ({ card, onCardPress }) => {
     return (
         <Container>
-            <ClickMe onPress={() => avancar()}>
+            <ClickMe onPress={() => onCardPress(card)}>
                 <CardImage source={{ uri: card.imageUrl }}></CardImage>
                 <CardInfo>
                     <CardName>{card.name}</CardName>
                     <CardType>{card.type}</CardType>
                     <CardEdition>{card.set}</CardEdition>
-                </CardInfo> 
+                </CardInfo>
             </ClickMe>
         </Container>
     );

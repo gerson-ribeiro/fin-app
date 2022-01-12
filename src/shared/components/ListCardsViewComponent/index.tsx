@@ -7,16 +7,21 @@ import { ListCard, ListCardView } from "./styles";
 interface IListCardViewProps {
     cards?: Array<Card>;
     deckList?: Array<{ card: Card; amount: number }>;
-    navigation: any;
+    onChangeAmountCallback?: (amount:number) => void;
+    onCardPress: (card:Card)=> void;
 }
 
 const ListCardViewComponent: React.FC<IListCardViewProps> = ({
     deckList,
     cards,
-    navigation,
+    onChangeAmountCallback,
+    onCardPress
 }) => {
-    const onChangeAmount = (amount: any) => {
-        console.log("quantidade",amount);        
+    const onChangeAmount = (amount: number) => {
+        console.log("quantidade",amount); 
+        if(onChangeAmountCallback){
+            onChangeAmountCallback(amount);
+        }
     };
 
     return (
@@ -26,8 +31,8 @@ const ListCardViewComponent: React.FC<IListCardViewProps> = ({
                     {cards.map((card, index) => (
                         <ListCardAdapter
                             key={index}
-                            navigation={navigation}
                             card={card}
+                            onCardPress={onCardPress}
                         />
                     ))}
                 </ListCard>
@@ -37,7 +42,7 @@ const ListCardViewComponent: React.FC<IListCardViewProps> = ({
                     {deckList.map(({ card, amount }, index) => (
                         <ListCardAmountAdapter
                             key={index}
-                            navigation={navigation}
+                            onCardPress={onCardPress}
                             card={card}
                             amount={amount}
                             callback={onChangeAmount}

@@ -33,6 +33,10 @@ export const ListCardComponent: React.FC<any> = (props) => {
         setLoading(true);
         setTimeout(() => getCards(), 3000);
     };
+    
+    const avancar = (card: Card) => {
+        navigation.navigate("CardView", { card: card })
+    };
 
     React.useEffect(() => {
         if (card.name) getCards();
@@ -44,7 +48,7 @@ export const ListCardComponent: React.FC<any> = (props) => {
             {loading ? (
                 <Loading>Carregando...</Loading>
             ) : (
-                <ListCardViewComponent cards={cards} navigation={navigation} />
+                <ListCardViewComponent cards={cards} onCardPress={avancar} />
             )}
         </Container>
     );
