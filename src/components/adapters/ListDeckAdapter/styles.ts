@@ -1,4 +1,7 @@
-import { View } from 'react-native';
-import { styled } from 'styled-components/native';
+import  styled from 'styled-components/native';
 
 export const Container = styled.View``;
+export const Pressable = styled.TouchableOpacity``;
+export const DeckName = styled.Text``;
+export const DeckFormat = styled.Text``;
+export const DeckDate = styled.Text``;

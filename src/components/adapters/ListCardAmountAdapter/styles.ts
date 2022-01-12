@@ -13,9 +13,7 @@ export const ClickMe = styled.TouchableOpacity`
     flex-direction: row;
     flex-wrap: wrap;
 `;
-export const CardImage = styled.Image`
-    height: 80px;
-    width: 60px;
+export const CardAmount = styled.TextInput`
     align-self: flex-start;
 `;
 export const CardInfo = styled.View`

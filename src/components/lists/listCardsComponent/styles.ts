@@ -12,23 +12,10 @@ export const Container = styled.KeyboardAvoidingView`
 export const Search = styled.TextInput`
     width: 100%;
     background-color: #ddd;
-    font-size: 22px;
-    margin-top: 10px;
-    padding: 10px;
+    font-size: 25px;
+    padding: 5px;
     border-bottom-color: black;
     border-bottom-width: 2px;
-`;
-
-export const ListCardView = styled.View`
-    margin-top: 10px;
-    width: 100%;
-    height: 600px;
-    background-color:#ddd;
-`;
-
-export const ListCard = styled(FlatList as new () => FlatList<Card>)`
-    width: 100%;
-    color: black;
 `;
 
 export const Loading = styled.Text``;

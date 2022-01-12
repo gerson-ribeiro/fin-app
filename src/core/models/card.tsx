@@ -21,6 +21,7 @@ class Card {
     imageUrl?: string | undefined;
     rulings?: { date: string; text: string; }[] | undefined;
     foreignNames?: { name: string; language: string; multiverseid: number; }[] | undefined;
+    gameFormat?: Object;
     
 }
 export default Card;

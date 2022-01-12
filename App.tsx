@@ -1,27 +1,27 @@
-import React from "react";
-import {
-    KeyboardAvoidingView,
-    SafeAreaView,
-    StyleSheet,
-} from "react-native";
-import { ListCardComponent } from "./src/components/lists/listCardsComponent";
 import 'react-native-gesture-handler';
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import {TabNavigatorComponent} from "./src/components/menu/TabNavigatorComponent";
+import { TabNavigatorComponent } from "./src/components/menu/TabNavigatorComponent";
+import DrawerNavigatorComponent from "./src/components/menu/DrawerNavigatorComponent";
 
+
+const myTheme = {
+    dark: false,
+    colors: {
+        primary: "rgb(255, 255, 255)",
+        background: "rgb(255, 255, 255)",
+        card: "rgb(255, 132, 0)",
+        text: "rgb(0, 0, 0)",
+        border: "rgb(255, 132, 132)",
+        notification: "rgb(255, 251, 0)",
+    },
+};
 const App = () => {
     return (
-            <TabNavigatorComponent />
+        <NavigationContainer theme={myTheme}>
+            <DrawerNavigatorComponent />
+            {/* <TabNavigatorComponent /> */}
+        </NavigationContainer>
     );
 };
 export default App;
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: "center",
-        display: "flex",
-        justifyContent: "center",
-        padding: 15,
-    },
-});

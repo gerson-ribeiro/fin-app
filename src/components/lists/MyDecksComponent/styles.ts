@@ -15,16 +15,3 @@ export const Search = styled.TextInput`
     margin-top: 10px;
     padding: 10px;
 `;
-
-export const ListDeckView = styled.View`
-    margin-top: 10px;
-    padding: 10px;
-    width: 100%;
-    height: 600px;
-`;
-
-export const ListDeck = styled(FlatList as new ()=> FlatList<string>)`
-    width: 100%;
-    color:black;
-`;
-

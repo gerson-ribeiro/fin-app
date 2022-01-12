@@ -8,8 +8,6 @@ class CardController {
         
     }
     get(card: Card): Promise<any>{
-        console.log('getting...');
-        
         return axios.get(this.url,{
             params:{ name: card.name }
         });

@@ -9,33 +9,38 @@ import MyDecksSVG from "../../../../assets/folder_black_24dp.svg";
 import LifeCounterSVG from "../../../../assets/casino_black_24dp.svg";
 
 const Tab = createBottomTabNavigator();
+interface TabNavigationProps {
+    tabs? : Array<{name: string, component:any, svg: any}>;
+    headerShown?: boolean;
+}
 
-export const TabNavigatorComponent = () => {
+export const TabNavigatorComponent: React.FC<TabNavigationProps> = ({tabs,headerShown}) => {
     return (
-        <NavigationContainer>
-            <Tab.Navigator>
+        <Tab.Navigator>
+            {tabs?.map(({name, component, svg})=>{
                 <Tab.Screen
-                    name="Buscar Cards"
-                    component={ListCardComponent}
+                    name={name}
+                    component={component}
                     options={{
-                        tabBarIcon: ({color}) => <SearchSVG fill={ color } />,
+                        headerShown: headerShown,
+                        tabBarIcon: ({ color }) => svg,
                     }}
                 />
-                <Tab.Screen
-                    name="Meus Decks"
-                    component={MyDecksComponent}
-                    options={{
-                        tabBarIcon: ({ color }) => <MyDecksSVG fill={ color }  />,
-                    }}
-                />
-                <Tab.Screen
-                    name="Marcador de Vida"
-                    component={LifeCounterComponent}
-                    options={{
-                        tabBarIcon: ({ color }) => <LifeCounterSVG fill={ color }  />,
-                    }}
-                />
-            </Tab.Navigator>
-        </NavigationContainer>
+            })}
+            {/* <Tab.Screen
+                name="Meus Decks"
+                component={MyDecksComponent}
+                options={{
+                    tabBarIcon: ({ color }) => <MyDecksSVG fill={color} />,
+                }}
+            />
+            <Tab.Screen
+                name="Marcador de Vida"
+                component={LifeCounterComponent}
+                options={{
+                    tabBarIcon: ({ color }) => <LifeCounterSVG fill={color} />,
+                }}
+            /> */}
+        </Tab.Navigator>
     );
 };
