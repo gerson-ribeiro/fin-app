@@ -1,9 +1,15 @@
 import Card from "./card";
 
 class Deck {
-    public cards!: Array<{ card:Card, amount: number }>;
+    constructor() {
+        this.cards = new Array<{ card: Card; amount: number }>();
+        this.format = "";
+        this.name = "";
+        this.date = new Date();
+    }
+    public cards: Array<{ card: Card; amount: number }>;
     public format?: string;
-    public name!: string;
-    public date!: Date;
+    public name: string;
+    public date: Date;
 }
 export default Deck;

@@ -3,7 +3,6 @@ import styled from "styled-components/native";
 export const ListCardView = styled.View`
     margin-top: 5px;
     width: 100%;
-    height: 100%;
     background-color: #ddd;
 `;
 

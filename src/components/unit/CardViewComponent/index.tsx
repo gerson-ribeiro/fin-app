@@ -11,15 +11,12 @@ import { NavigationStackScreenProps } from "react-navigation-stack";
 
 const Tab = createBottomTabNavigator();
 
-interface CardViewProps{
-    navigation: NavigationStackScreenProps;
+interface ICardViewProps{
+    navigation: any;
     route: {params: {card:Card}}
 }
 
-const CardViewComponent: React.FC<any> = (props) => {
-    const { navigation, route: { params : { card }}} = props;
-    // console.log("card", card.name)
-    // console.log(navigation)
+const CardViewComponent: React.FC<ICardViewProps> = ( { navigation, route: { params : { card }}}) => {
     useLayoutEffect(() => {
       navigation.setOptions({title:card.name})
     },[])

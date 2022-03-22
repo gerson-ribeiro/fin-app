@@ -1,26 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 import CardController from "../../../core/controllers/CardController";
 import Card from "../../../core/models/card";
-import { Container,  Loading, Search } from "./styles";
+import { Container, Loading, Search } from "./styles";
 import ListCardAdapter from "../../adapters/ListCardAdapter";
 import ListCardViewComponent from "../../../shared/components/ListCardsViewComponent";
 
 const cards_res = new CardController();
 
-export const ListCardComponent: React.FC<any> = (props) => {
+export const ListCardComponent: React.FC<any> = ({ navigation }) => {
     const [cards, setListCards] = useState(new Array<Card>());
     const [card, setCard] = useState(new Card());
     const [loading, setLoading] = useState(false);
-    const { navigation } = props;
 
-    const getCards = () => {
-        setLoading(true);
-        cards_res
-            .get(card)
-            .then(({ data }) => setListCards(data.cards))
-            .catch(() => setListCards(new Array<Card>()))
-            .finally(() => setLoading(false));
+    const getCards = () => {     
+        cards_res.filter = card;   
+        cards_res.getCards(data => setListCards(cards_res.cards),e=> setListCards(new Array<Card>()),() => setLoading(false));
     };
 
     const onChangeCardName = (value: any) => {
@@ -33,12 +28,12 @@ export const ListCardComponent: React.FC<any> = (props) => {
         setLoading(true);
         setTimeout(() => getCards(), 3000);
     };
-    
+
     const avancar = (card: Card) => {
-        navigation.navigate("CardView", { card: card })
+        navigation.navigate("CardView", { card: card });
     };
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (card.name) getCards();
     }, [card]);
 
